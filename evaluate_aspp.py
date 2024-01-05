@@ -44,45 +44,6 @@ def compute_aspp_scoring_df(df, list_of_aspp_ids):
     return pd.DataFrame(aspp_df)
 
 
-def benchmark_features(df, result_path, features_to_check):
-    
-
-    sort_by = "overall"
-
-    ax = sns.scatterplot(
-        data=features_df.sort_values(sort_by, ascending=False)[:10],
-        x="consistency", y="grading", hue="feature")
-    # sns.move_legend(ax, "upper left", bbox_to_anchor=(1, 1))
-    plt.tight_layout()
-    plt.savefig(os.path.join(result_path, "feature_scores.png"))
-    plt.savefig(os.path.join(result_path, "feature_scores.eps"))
-    plt.close()
-
-    top_k_features = ["vel [km/h]"]
-    for feature in features_df.sort_values(sort_by, ascending=False)["feature"].head(4):
-        top_k_features.append(str(feature))
-
-    count = 0
-    for feature in features_df.sort_values(sort_by, ascending=False)["feature"].head(10):
-        plot_feature(df, feature, result_path, count)
-        count += 1
-
-    sns.pairplot(data=df, vars=top_k_features, hue="gtr - grade")
-    plt.savefig(os.path.join(result_path, "ov_features_grade.png"))
-    plt.savefig(os.path.join(result_path, "ov_features_grade.eps"))
-    plt.close()
-
-    sns.pairplot(data=df, vars=top_k_features, hue="account")
-    plt.savefig(os.path.join(result_path, "ov_features_consistency.png"))
-    plt.savefig(os.path.join(result_path, "ov_features_consistency.eps"))
-    plt.close()
-
-    print("[INFO] TOP Features on ZEB:")
-    print(features_df.sort_values(sort_by, ascending=False))
-
-    return top_k_features
-
-
 def merge_processed(list_of_processed):
     merged = {}
     for processed in list_of_processed:
