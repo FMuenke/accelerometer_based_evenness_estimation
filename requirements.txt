@@ -1,0 +1,12 @@
+scikit-learn
+numpy
+pandas
+seaborn
+matplotlib
+opencv-python
+pillow
+tqdm
+shapely
+geopandas
+python-dotenv
+scipy
