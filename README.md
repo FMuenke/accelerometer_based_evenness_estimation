@@ -2,6 +2,7 @@
 
 This repository contains the code to replicate the findings of ....
 Including two datasets: ZEB Data Set and Windshield Data Set.
+The data can be obtained at: https://osf.io/q2xhs/
 
 ## Code
 The code features Accelerometer Signal Processing Pipelines (ASPP), which are a means to analyze accelerometer signals.
